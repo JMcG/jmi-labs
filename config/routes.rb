@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
   resources :base_objectives
-  resources :hospitals
+  
+  resources :hospitals do
+    
+    collection do
+      post 'set_current_hospital'
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'hospitals#welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

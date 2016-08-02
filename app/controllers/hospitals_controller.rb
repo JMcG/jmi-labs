@@ -1,5 +1,18 @@
 class HospitalsController < ApplicationController
-  before_action :set_hospital, only: [:show, :edit, :update, :destroy]
+  before_action :set_hospital, only: [:set_current_hospital, :show, :edit, :update, :destroy]
+
+  def welcome
+    @hospitals = Hospital.all
+  end
+
+  def set_current_hospital
+    if @hospital
+      session[:hospital_id] = @hospital.id
+      head 200
+    else
+      head 404
+    end
+  end
 
   # GET /hospitals
   # GET /hospitals.json

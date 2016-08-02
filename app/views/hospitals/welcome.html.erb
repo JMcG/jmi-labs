@@ -1,0 +1,9 @@
+<div class="welcome-container">
+  
+  <%= select("hospital", "name", @hospitals.collect{|h| ["#{h.id} - #{h.name}", h.id] }, {include_blank: '', selected: current_hospital.try(:id)}, {data: {placeholder: "Please enter your hospital #"}} ) %>
+
+</div>
+
+<%= content_for :js_init do %>
+  <%= javascript_tag "JMI.hospitals.init();" %>
+<% end -%>
