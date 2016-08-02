@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jmi_number: 1
+  organism_species: MyString
+  admission_date: 2016-08-01 17:18:17
+  spec_type: MyString
+  source_of_bsia: MyString
+  primary_diagnosis: MyString
+
+two:
+  jmi_number: 1
+  organism_species: MyString
+  admission_date: 2016-08-01 17:18:17
+  spec_type: MyString
+  source_of_bsia: MyString
+  primary_diagnosis: MyString

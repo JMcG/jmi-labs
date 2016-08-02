@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jmi_number: 1
+  specimen_typea: MyString
+  bacteria_type: MyString
+
+two:
+  jmi_number: 1
+  specimen_typea: MyString
+  bacteria_type: MyString

@@ -1,0 +1,56 @@
+<%- model_class = BaseObjective -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:parent_type) %></th>
+      <th><%= model_class.human_attribute_name(:parent_id) %></th>
+      <th><%= model_class.human_attribute_name(:age) %></th>
+      <th><%= model_class.human_attribute_name(:sex) %></th>
+      <th><%= model_class.human_attribute_name(:culture_date) %></th>
+      <th><%= model_class.human_attribute_name(:serviceb) %></th>
+      <th><%= model_class.human_attribute_name(:accession_number) %></th>
+      <th><%= model_class.human_attribute_name(:icu) %></th>
+      <th><%= model_class.human_attribute_name(:nosocomial) %></th>
+      <th><%= model_class.human_attribute_name(:code_number) %></th>
+      <th><%= model_class.human_attribute_name(:shipment_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @base_objectives.each do |base_objective| %>
+      <tr>
+        <td><%= link_to base_objective.id, base_objective_path(base_objective) %></td>
+        <td><%= base_objective.parent_type %></td>
+        <td><%= base_objective.parent_id %></td>
+        <td><%= base_objective.age %></td>
+        <td><%= base_objective.sex %></td>
+        <td><%= base_objective.culture_date %></td>
+        <td><%= base_objective.serviceb %></td>
+        <td><%= base_objective.accession_number %></td>
+        <td><%= base_objective.icu %></td>
+        <td><%= base_objective.nosocomial %></td>
+        <td><%= base_objective.code_number %></td>
+        <td><%= base_objective.shipment_id %></td>
+        <td><%=l base_objective.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_base_objective_path(base_objective), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      base_objective_path(base_objective),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_base_objective_path,
+            :class => 'btn btn-primary' %>

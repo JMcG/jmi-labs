@@ -1,0 +1,2 @@
+module BaseObjectivesHelper
+end

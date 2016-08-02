@@ -11,16 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801215631) do
+ActiveRecord::Schema.define(version: 20160802164810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "base_objectives", force: :cascade do |t|
+    t.string   "parent_type"
+    t.integer  "parent_id"
+    t.integer  "age"
+    t.string   "sex"
+    t.datetime "culture_date"
+    t.string   "serviceb"
+    t.integer  "accession_number"
+    t.string   "icu"
+    t.string   "nosocomial"
+    t.integer  "code_number"
+    t.integer  "shipment_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "base_objectives", ["parent_id"], name: "index_base_objectives_on_parent_id", using: :btree
+  add_index "base_objectives", ["parent_type"], name: "index_base_objectives_on_parent_type", using: :btree
+  add_index "base_objectives", ["shipment_id"], name: "index_base_objectives_on_shipment_id", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name"
     t.integer  "shipment_count"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "objective_a", force: :cascade do |t|
+    t.integer  "jmi_number"
+    t.string   "organism_species"
+    t.datetime "admission_date"
+    t.string   "spec_type",         default: "BC"
+    t.string   "source_of_bsia"
+    t.string   "primary_diagnosis"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "objective_b", force: :cascade do |t|
+    t.integer  "jmi_number"
+    t.string   "specimen_typea"
+    t.string   "bacteria_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "objective_q", force: :cascade do |t|
+    t.string   "organism_species"
+    t.string   "specimen_typea"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "shipments", force: :cascade do |t|

@@ -1,0 +1,104 @@
+<%= form_for @base_objective, :html => { :class => "form-horizontal base_objective" } do |f| %>
+
+  <% if @base_objective.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@base_objective.errors.count, "error") %> prohibited this base_objective from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @base_objective.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :parent_type, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :parent_type, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:parent_type) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :parent_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :parent_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:parent_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :age, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :age, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:age) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sex, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sex) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :culture_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :culture_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:culture_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :serviceb, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :serviceb, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:serviceb) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :accession_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :accession_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:accession_number) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :icu, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :icu, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:icu) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nosocomial, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :nosocomial, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:nosocomial) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :code_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :code_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:code_number) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shipment_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shipment_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shipment_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                base_objectives_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
