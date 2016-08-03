@@ -11,3 +11,36 @@ STATEMENT:                SELECT a.attname, format_type(a.atttypid, a.atttypmod)
 	                 AND a.attnum > 0 AND NOT a.attisdropped
 	               ORDER BY a.attnum
 	
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "shipments".* FROM "shipments" WHERE "shipments"."hospital_id" = $1
+ERROR:  missing FROM-clause entry for table "hospital" at character 51
+STATEMENT:  SELECT  "objective_b".* FROM "objective_b" WHERE (shipment.hospital.id =1)  ORDER BY "objective_b"."id" ASC LIMIT 1
+ERROR:  missing FROM-clause entry for table "hospitals" at character 51
+STATEMENT:  SELECT  "objective_b".* FROM "objective_b" WHERE (shipments.hospitals.id =1)  ORDER BY "objective_b"."id" ASC LIMIT 1
+ERROR:  missing FROM-clause entry for table "hospital" at character 51
+STATEMENT:  SELECT  "objective_b".* FROM "objective_b" WHERE (hospital.id =1)  ORDER BY "objective_b"."id" ASC LIMIT 1
+ERROR:  missing FROM-clause entry for table "hospitals" at character 51
+STATEMENT:  SELECT  "objective_b".* FROM "objective_b" WHERE (hospitals.id =1)  ORDER BY "objective_b"."id" ASC LIMIT 1
+ERROR:  missing FROM-clause entry for table "hospital" at character 50
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" WHERE (hospital.id = 1)
+ERROR:  missing FROM-clause entry for table "hospitals" at character 50
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" WHERE (hospitals.id = 1)
+ERROR:  column objective_b.hospital_id does not exist at character 49
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" WHERE "objective_b"."hospital_id" = 1
+ERROR:  column objective_b.hospital_id does not exist at character 671
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_b"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" INNER JOIN "base_objectives" "base_objectives_objective_b_join" ON "base_objectives_objective_b_join"."parent_id" = "objective_b"."id" AND "base_objectives_objective_b_join"."parent_type" = $2 INNER JOIN "shipments" "shipments_objective_b_join" ON "shipments_objective_b_join"."id" = "base_objectives_objective_b_join"."shipment_id" INNER JOIN "hospitals" ON "hospitals"."id" = "shipments_objective_b_join"."hospital_id" WHERE "objective_b"."hospital_id" = 1
+ERROR:  invalid reference to FROM-clause entry for table "hospitals" at character 672
+HINT:  There is an entry for table "hospitals", but it cannot be referenced from this part of the query.
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_b"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" INNER JOIN "base_objectives" "base_objectives_objective_b_join" ON "base_objectives_objective_b_join"."parent_id" = "objective_b"."id" AND "base_objectives_objective_b_join"."parent_type" = $2 INNER JOIN "shipments" "shipments_objective_b_join" ON "shipments_objective_b_join"."id" = "base_objectives_objective_b_join"."shipment_id" INNER JOIN "hospitals" ON "hospitals"."id" = "shipments_objective_b_join"."hospital_id" WHERE (shipments.hospitals.id = 1)
+ERROR:  column shipments.hospitals_id does not exist at character 251
+HINT:  Perhaps you meant to reference the column "shipments.hospital_id".
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_b"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" WHERE (shipments.hospitals_id = 1)
+ERROR:  missing FROM-clause entry for table "shipment" at character 251
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_b"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" WHERE (shipment.hospitals_id = 1)
+ERROR:  column shipments.hospitals_id does not exist at character 251
+HINT:  Perhaps you meant to reference the column "shipments.hospital_id".
+STATEMENT:  SELECT "objective_b".* FROM "objective_b" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_b"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" WHERE (shipments.hospitals_id = 1)
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "base_objectives".* FROM "base_objectives" WHERE "base_objectives"."parent_id" = $1 AND "base_objectives"."parent_type" = $2 LIMIT 1
+ERROR:  invalid input syntax for integer: "A--0"
+STATEMENT:  INSERT INTO "base_objectives" ("code_number", "parent_type", "parent_id", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"

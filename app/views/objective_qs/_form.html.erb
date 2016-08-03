@@ -1,0 +1,41 @@
+<%= form_for @objective_q, :html => { :class => "form-horizontal objective_q" } do |f| %>
+
+  <% if @objective_q.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@objective_q.errors.count, "error") %> prohibited this objective_q from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @objective_q.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :organism_species, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :organism_species, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:organism_species) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :specimen_typea, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :specimen_typea, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:specimen_typea) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                objective_qs_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

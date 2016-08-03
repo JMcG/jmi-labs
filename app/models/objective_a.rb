@@ -1,5 +1,22 @@
 class ObjectiveA < ActiveRecord::Base
   self.table_name = "objective_a"
 
-  
+  def to_partial_path
+    "objectives/objective_a/objective_a"
+  end
+
+  has_one :base_objective, :as => :parent
+  has_one :shipment, :through => :base_objective
+  has_one :hospital, :through => :shipment
+
+  accepts_nested_attributes_for :base_objective
+
+
+  def self.has_requirements?
+    false
+  end
+
+  def code_prefix
+    "A-"
+  end
 end

@@ -1,0 +1,4 @@
+<% if @objective.has_requirements? %>
+  $("#objective_select").after('<%=j render "/objectives/#{@objective.name.underscore}/requirements" %>')
+  
+<% end %>

@@ -1,0 +1,15 @@
+<% @shipment.isolates.each_with_index do |isolate| %>
+  <%= render '/base_objectives/form', {base_objective: isolate, objective: isolate.parent} %>
+<% end -%>
+
+<div class="form-group">
+  <div class="col-lg-offset-2 col-lg-10">
+    <%= submit_tag "Save", :class => 'btn btn-primary', :id => "submit_all" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              base_objectives_path, :class => 'btn btn-default' %>
+  </div>
+</div>
+
+<%= content_for :js_init do %>
+  <%= javascript_tag "JMI.shipments.init()" %>
+<% end -%>

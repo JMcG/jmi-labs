@@ -1,0 +1,44 @@
+<%#= form_for @objective_a, :html => { :class => "form-horizontal objective_a" } do |f| %>
+  
+<%= f.fields_for :parent do | parent | %>
+
+  <div class="form-group">
+    <%= parent.label :jmi_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= parent.text_field :jmi_number, :class => 'form-control' %>
+    </div>
+    <%=parent.error_span(:jmi_number) %>
+  </div>
+
+  <div class="form-group">
+    <%= parent.label :organism_species, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= parent.text_field :organism_species, :class => 'form-control' %>
+    </div>
+    <%=parent.error_span(:organism_species) %>
+  </div>
+  <div class="form-group">
+    <%= parent.label :admission_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= parent.text_field :admission_date, :class => 'form-control' %>
+    </div>
+    <%=parent.error_span(:admission_date) %>
+  </div>
+  
+  <div class="form-group">
+    <%= parent.label :source_of_bsia, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= parent.text_field :source_of_bsia, :class => 'form-control' %>
+    </div>
+    <%=parent.error_span(:source_of_bsia) %>
+  </div>
+  <div class="form-group">
+    <%= parent.label :primary_diagnosis, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= parent.text_field :primary_diagnosis, :class => 'form-control' %>
+    </div>
+    <%=parent.error_span(:primary_diagnosis) %>
+  </div>
+  
+
+<% end %>

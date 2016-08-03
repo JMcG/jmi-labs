@@ -1,0 +1,8 @@
+<div class="form-group active" id="bacteria_type">
+  <%= label_tag :bacteria_type, nil, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= select "bacteria", "type", ObjectiveB::bacteria_type_values, {include_blank: true}, {data: {placeholder: "Select Bacteria Type"}, :class => 'select-control form-control'} %>
+  </div>
+</div>
+
+<%= javascript_tag "JMI.objective_b.requirements()" %>

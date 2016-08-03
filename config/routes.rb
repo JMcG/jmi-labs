@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
-  resources :base_objectives
+  resources :base_objectives do
+    collection do 
+      get "check_requirements"
+    end
+  end
   
   resources :hospitals do
-    
+
     collection do
       post 'set_current_hospital'
+    end
+  end
+
+
+  resources :shipments do
+
+    collection do
+      post "select_objective"
     end
   end
 

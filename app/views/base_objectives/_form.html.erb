@@ -1,13 +1,14 @@
-<%= form_for @base_objective, :html => { :class => "form-horizontal base_objective" } do |f| %>
+<h2><%= base_objective.code_number %></h1>
+<%= form_for base_objective, :html => { :class => "form-horizontal base_objective #{objective.class.name.underscore}", :remote => true } do |f| %>
 
-  <% if @base_objective.errors.any? %>
+  <% if base_objective.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@base_objective.errors.count, "error") %> prohibited this base_objective from being saved:</h3>
+        <h3 class="panel-title"><%= pluralize(base_objective.errors.count, "error") %> prohibited this base_objective from being saved:</h3>
       </div>
       <div class="panel-body">
         <ul>
-        <% @base_objective.errors.full_messages.each do |msg| %>
+        <% base_objective.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -15,20 +16,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :parent_type, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :parent_type, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:parent_type) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :parent_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :parent_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:parent_id) %>
-  </div>
+  <%= render "/objectives/#{objective.class.name.underscore}/form", :f => f %>
+  
   <div class="form-group">
     <%= f.label :age, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -78,22 +67,8 @@
     </div>
     <%=f.error_span(:nosocomial) %>
   </div>
-  <div class="form-group">
-    <%= f.label :code_number, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :code_number, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:code_number) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :shipment_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :shipment_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:shipment_id) %>
-  </div>
 
-  <div class="form-group">
+  <div class="form-group isolate_submit">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

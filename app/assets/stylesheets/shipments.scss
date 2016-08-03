@@ -1,0 +1,30 @@
+form{
+
+  &.shipment{
+    .form-group{
+      display: none;
+
+      &.active{
+        display: block;
+      }
+    }
+
+    select{
+      width: 75%;
+      max-width: 400px;
+    }  
+  }
+
+  .form-control{
+    max-width: 400px;
+  }
+
+}
+
+html.multiple_isolates{
+  
+  #save_all_container, .isolate_submit{
+    display: none;
+  }
+
+}

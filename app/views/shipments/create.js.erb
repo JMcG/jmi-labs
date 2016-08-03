@@ -1,0 +1,6 @@
+<% @shipment.isolates.each_with_index do |isolate| %>
+  $("#objective_form").append("<%=j render '/base_objectives/form', {base_objective: isolate, objective: isolate.parent} %>");
+<% end %>
+
+$("#new_shipment").remove()
+$("#save_all_container, #objective_form").show()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802164810) do
+ActiveRecord::Schema.define(version: 20160803180232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160802164810) do
     t.integer  "accession_number"
     t.string   "icu"
     t.string   "nosocomial"
-    t.integer  "code_number"
+    t.string   "code_number"
     t.integer  "shipment_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 20160802164810) do
   create_table "shipments", force: :cascade do |t|
     t.integer  "hospital_id"
     t.boolean  "sent"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "target_isolates"
+    t.integer  "isolate_count"
   end
 
   add_index "shipments", ["hospital_id"], name: "index_shipments_on_hospital_id", using: :btree

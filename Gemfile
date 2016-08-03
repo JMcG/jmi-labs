@@ -44,3 +44,5 @@ group :development do
 end
 
 gem "twitter-bootstrap-rails"
+
+gem 'enumerated_field'
