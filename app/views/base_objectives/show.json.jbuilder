@@ -1,1 +1,0 @@
-json.partial! "base_objectives/base_objective", base_objective: @base_objective

@@ -1,1 +1,0 @@
-json.array! @base_objectives, partial: 'base_objectives/base_objective', as: :base_objective

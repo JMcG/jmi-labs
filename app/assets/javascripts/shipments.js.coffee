@@ -19,7 +19,3 @@ JMI.shipments =
       window.location.href = $(this).data('redirect-to')
 
     $('.select-control').chosen()
-
-  # startDateEntry: (objective_id) ->
-  #   $.get("/base_objectives/new", { id: objective_id })
-    

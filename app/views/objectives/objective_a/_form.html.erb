@@ -1,5 +1,3 @@
-<%#= form_for @objective_a, :html => { :class => "form-horizontal objective_a" } do |f| %>
-  
 <%= f.fields_for :parent do | parent | %>
 
   <div class="form-group">
@@ -40,5 +38,4 @@
     <%=parent.error_span(:primary_diagnosis) %>
   </div>
   
-
 <% end %>
