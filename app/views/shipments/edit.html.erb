@@ -1,4 +1,4 @@
-<% @shipment.isolates.each_with_index do |isolate| %>
+<% @shipment.isolates.sort.each_with_index do |isolate| %>
   <%= render '/base_objectives/form', {base_objective: isolate, objective: isolate.parent} %>
 <% end -%>
 

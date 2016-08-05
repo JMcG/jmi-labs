@@ -35,7 +35,6 @@
   <div class="form-group">
     <%= parent.label :primary_diagnosis, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%#= parent.text_field :primary_diagnosis, :class => 'form-control' %>
       <%= parent.select :primary_diagnosis, ObjectiveA::primary_diagnosis_values, {include_blank: true}, {data: {placeholder: "select primary diagnosis"}, :class => 'select-control form-control'} %>
     </div>
     <%=parent.error_span(:primary_diagnosis) %>

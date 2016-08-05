@@ -13,12 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :shipments do
-
-    collection do
-      post "select_objective"
-    end
-  end
+  resources :shipments do end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

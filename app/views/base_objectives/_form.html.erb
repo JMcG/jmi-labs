@@ -28,7 +28,7 @@
   <div class="form-group">
     <%= f.label :sex, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :sex, :class => 'form-control' %>
+      <%= f.select :sex, BaseObjective::sex_values, {include_blank: true}, {data: {placeholder: "select sex"}, :class => 'select-control form-control'} %>
     </div>
     <%=f.error_span(:sex) %>
   </div>
@@ -42,7 +42,6 @@
   <div class="form-group">
     <%= f.label :serviceb, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%#= f.text_field :serviceb, :class => 'form-control' %>
       <%= f.select :serviceb, BaseObjective::serviceb_values, {include_blank: true}, {data: {placeholder: "select service"}, :class => 'select-control form-control'} %>
     </div>
     <%=f.error_span(:serviceb) %>

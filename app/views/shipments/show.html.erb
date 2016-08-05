@@ -10,17 +10,9 @@
   <dd><%= @shipment.target_isolates %></dd>
 </dl>
 
-<% @shipment.isolates.each do |isolate| %>
+<% @shipment.isolates.sort.each do |isolate| %>
   <%= render "isolate", :isolate => isolate, :model_class => model_class %>
 <% end -%>
-
-<%# @shipment.isolates.each do |isolate| %>
-  
-  
-  <%#= render isolate %>
-
-<% #end -%>
-
 
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

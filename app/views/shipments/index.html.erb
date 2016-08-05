@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>Objective</th>
+      <th>Isolates</th>
       <th>Created</th>
       <th></th>
     </tr>
@@ -13,6 +14,7 @@
     <% @shipments.each do |shipment| %>
       <tr>
         <td><%= link_to shipment.objective_name, shipment_path(shipment) %></td>
+        <td><%= shipment.target_isolates %></td>
         <td><%= shipment.created_at.to_formatted_s(:short) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

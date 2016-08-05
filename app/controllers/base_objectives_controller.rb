@@ -37,18 +37,6 @@ class BaseObjectivesController < ApplicationController
     end
   end
 
-  def select_objective
-    if objective = BaseObjective.parent_objectives[params[:id]]
-      logger.debug { objective }
-      @objective = objective.new
-      @base_objective = @objective.build_base_objective(:parent => @objective)
-    end
-
-    respond_to do |format|
-      format.js { render @base_objective }
-    end
-  end
-
   # GET /base_objectives/1/edit
   def edit
   end

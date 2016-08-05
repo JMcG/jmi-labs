@@ -1,9 +1,11 @@
 class BaseObjective < ActiveRecord::Base
   include EnumeratedField
-  belongs_to :parent, :polymorphic => true, :touch => true
+  belongs_to :parent, :polymorphic => true, :touch => true, :dependent => :destroy
   accepts_nested_attributes_for :parent
 
   belongs_to :shipment
+
+  enum_field(:sex, [['Male', 'M'], ['Female', 'F']], :allow_blank => true)
 
   enum_field(:serviceb, 
     [
