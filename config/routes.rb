@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     collection do
       post 'set_current_hospital'
+      get 'stats'
     end
   end
 

@@ -1,6 +1,8 @@
 class Hospital < ActiveRecord::Base
   has_many :shipments, :dependent => :destroy
 
+  default_scope { order(:name) }
+
 
   def starting_code_for(objective, code_prefix = nil)
     begin
@@ -14,6 +16,10 @@ class Hospital < ActiveRecord::Base
     rescue Exception => e
       return 0
     end
+  end
+
+  def isolates_count
+    shipments.all.inject(0){|x, shipment| x += shipment.target_isolates }
   end
 
   # Used to seed example data for hospital

@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1>Stats</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <h3>General</h3>
+  <dt><strong>Hospitals</strong></dt>
+  <dd><%= Hospital.count %></dd>
+  <dt><strong>Shipments</strong></dt>
+  <dd><%= Shipment.count %></dd>
+  <dt><strong>Isolates</strong></dt>
+  <dd><%= BaseObjective.count %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <h3>Per Objective</h3>
+  <% BaseObjective.parent_objectives.each do |name, objective| %>
+    <dt><strong><%= name %></strong></dt>
+    <dd><%= objective.count %></dd>
+  <% end -%>
+</dl>
+
+<dl class="dl-horizontal">
+  <h3>Per Hospital</h3>
+  <% Hospital.all.each do | hospital | %>
+    <h4><%= hospital.name %></h4>
+    <dt><strong>Shipments</strong></dt>
+    <dd><%= hospital.shipments_count %></dd>
+
+    <dt><strong>Isolates</strong></dt>
+    <dd><%= hospital.isolates_count %></dd>
+
+    <% BaseObjective.parent_objectives.each do |name, objective| %>
+      <dt><strong><%= name %></strong></dt>
+      <dd><%= objective.joins(:shipment).where("shipments.hospital_id = ?", hospital.id).count %></dd>
+    <% end -%>
+
+  <% end -%>
+</dl>

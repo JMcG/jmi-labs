@@ -49,15 +49,6 @@ class BaseObjectivesController < ApplicationController
     if @base_objective.save
       head 200
     end
-  #   respond_to do |format|
-  #     if @base_objective.save
-  #       format.html { redirect_to @base_objective, notice: 'Base objective was successfully created.' }
-  #       format.json { render :show, status: :created, location: @base_objective }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @base_objective.errors, status: :unprocessable_entity }
-  #     end
-  #   end
   end
 
   # PATCH/PUT /base_objectives/1
@@ -65,19 +56,7 @@ class BaseObjectivesController < ApplicationController
   def update
     if @base_objective.update(base_objective_params)
       head 200
-
-    else
-      logger.debug { "ERROR #{@base_objective.errors.full_messages}" }
     end
-    # respond_to do |format|
-    #   if @base_objective.update(base_objective_params)
-    #     format.html { redirect_to @base_objective, notice: 'Base objective was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @base_objective }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @base_objective.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /base_objectives/1
