@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803180232) do
+ActiveRecord::Schema.define(version: 20160804183947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160803180232) do
     t.string   "primary_diagnosis"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "name"
   end
 
   create_table "objective_b", force: :cascade do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160803180232) do
     t.string   "bacteria_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "name"
   end
 
   create_table "objective_q", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160803180232) do
     t.string   "specimen_typea"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "name"
   end
 
   create_table "shipments", force: :cascade do |t|
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160803180232) do
     t.datetime "updated_at",      null: false
     t.integer  "target_isolates"
     t.integer  "isolate_count"
+    t.string   "objective_name"
   end
 
   add_index "shipments", ["hospital_id"], name: "index_shipments_on_hospital_id", using: :btree

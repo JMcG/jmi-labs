@@ -3,8 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 window.JMI ||= {}
 
-
-
 JMI.hospitals =
   init: ->
     @bindings()
@@ -12,7 +10,9 @@ JMI.hospitals =
   bindings: ->
     $("#hospital_name").chosen()
       .on 'change', ->
-        $.post("/hospitals/set_current_hospital", {id: $(this).val()})
+        $.post("/hospitals/set_current_hospital", {id: $(this).val()}, ->
+          $("#submit_hospital").attr('disabled', false)
+        ) 
     
 
 

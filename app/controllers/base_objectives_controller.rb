@@ -77,6 +77,9 @@ class BaseObjectivesController < ApplicationController
   def update
     if @base_objective.update(base_objective_params)
       head 200
+
+    else
+      logger.debug { "ERROR #{@base_objective.errors.full_messages}" }
     end
     # respond_to do |format|
     #   if @base_objective.update(base_objective_params)

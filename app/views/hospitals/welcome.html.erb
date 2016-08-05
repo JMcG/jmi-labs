@@ -1,6 +1,9 @@
 <div class="welcome-container">
   
-  <%= select("hospital", "name", @hospitals.collect{|h| ["#{h.id} - #{h.name}", h.id] }, {include_blank: '', selected: current_hospital.try(:id)}, {data: {placeholder: "Please enter your hospital #"}} ) %>
+  <div class="form-group">
+  <%= select("hospital", "name", @hospitals.collect{|h| ["#{h.id} - #{h.name}", h.id] }, {include_blank: ''}, {data: {placeholder: "Please enter your hospital #"}} ) %>
+  </div>
+  <%= link_to "Continue", shipments_path, :class => "btn btn-primary", :disabled => true, :id => "submit_hospital"%>
 
 </div>
 

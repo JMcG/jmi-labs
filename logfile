@@ -44,3 +44,39 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "base_objectives".* FROM "base_objectives" WHERE "base_objectives"."parent_id" = $1 AND "base_objectives"."parent_type" = $2 LIMIT 1
 ERROR:  invalid input syntax for integer: "A--0"
 STATEMENT:  INSERT INTO "base_objectives" ("code_number", "parent_type", "parent_id", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"
+ERROR:  relation "objectiv_a" does not exist
+STATEMENT:  ALTER TABLE "objectiv_a" ADD "name" character varying
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" INNER JOIN "base_objectives" ON "base_objectives"."parent_id" = "objective_a"."id" AND "base_objectives"."parent_type" = $1 INNER JOIN "shipments" ON "shipments"."id" = "base_objectives"."shipment_id" WHERE (shipments.hospital_id = 2)  ORDER BY "objective_a"."id" DESC LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a23
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a23
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a23
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a23
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a23
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_a".* FROM "objective_a" WHERE "objective_a"."id" = $1 LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "objective_b".* FROM "objective_b" WHERE "objective_b"."id" = $1 LIMIT 1
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+STATEMENT:  DEALLOCATE a12
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "shipments".* FROM "shipments" WHERE "shipments"."hospital_id" = $1
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down

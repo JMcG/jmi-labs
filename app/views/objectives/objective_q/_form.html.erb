@@ -10,7 +10,8 @@
   <div class="form-group">
     <%= parent.label :specimen_typea, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= parent.text_field :specimen_typea, :class => 'form-control' %>
+      <%#= parent.text_field :specimen_typea, :class => 'form-control' %>
+      <%= parent.select :specimen_typea, ObjectiveB::specimen_typea_values, {include_blank: true}, {data: {placeholder: "select specimen type"}, :class => 'select-control form-control'} %>
     </div>
     <%=parent.error_span(:specimen_typea) %>
   </div>

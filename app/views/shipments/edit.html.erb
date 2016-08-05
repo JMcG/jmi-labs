@@ -4,9 +4,9 @@
 
 <div class="form-group">
   <div class="col-lg-offset-2 col-lg-10">
-    <%= submit_tag "Save", :class => 'btn btn-primary', :id => "submit_all" %>
+    <%= submit_tag "Save", :class => 'btn btn-primary edit', :id => "submit_all", :data => {:redirect_to => "/shipments/#{@shipment.id}"} %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-              base_objectives_path, :class => 'btn btn-default' %>
+              @shipment, :class => 'btn btn-default' %>
   </div>
 </div>
 

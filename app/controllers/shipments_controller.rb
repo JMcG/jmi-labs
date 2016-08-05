@@ -4,7 +4,11 @@ class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = current_hospital.shipments.all
+    if current_hospital
+      @shipments = current_hospital.shipments.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /shipments/1
@@ -18,19 +22,7 @@ class ShipmentsController < ApplicationController
     @objectives   = [["Objective A", 'objective_a'], ["Objective B", 'objective_b'], ["Objective Q", 'objective_q']]
     @doc_classes  = "multiple_isolates"
   end
-
-  # def select_objective
-  #   if objective = BaseObjective.parent_objectives[params[:id]]
-  #     logger.debug { objective }
-  #     @objective = objective.new
-  #     @base_objective = @objective.build_base_objective(:parent => @objective)
-  #   end
-
-  #   respond_to do |format|
-  #     format.js { render @base_objective }
-  #   end
-  # end
-
+  
   # GET /shipments/1/edit
   def edit
     @doc_classes  = "multiple_isolates"
@@ -51,12 +43,15 @@ class ShipmentsController < ApplicationController
 
       @shipment.target_isolates.times do |x|
         parent_objective  = objective.new(bacteria_type ||= {})
+        
         code_number       = parent_objective.code_prefix+"#{(starting_code + x + 1)}"
 
         isolate           = @shipment.isolates.new({code_number: code_number})
         isolate.parent    = parent_objective
         isolate.save
       end
+
+      @shipment.update_attribute(:objective_name, "#{objective.name} #{objective.new(bacteria_type ||= {}).name}")
     end
 
     respond_to do |format|

@@ -1,0 +1,22 @@
+<h2><%= isolate.code_number %></h2>
+
+<dl class="dl-horizontal">
+  <%= render isolate.parent, :objective => isolate.parent %>
+
+  <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
+  <dd><%= isolate.age %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sex) %>:</strong></dt>
+  <dd><%= isolate.sex %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:culture_date) %>:</strong></dt>
+  <dd><%= isolate.culture_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:serviceb) %>:</strong></dt>
+  <dd><%= isolate.serviceb %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:accession_number) %>:</strong></dt>
+  <dd><%= isolate.accession_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:icu) %>:</strong></dt>
+  <dd><%= isolate.icu %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nosocomial) %>:</strong></dt>
+  <dd><%= isolate.nosocomial %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:code_number) %>:</strong></dt>
+  <dd><%= isolate.code_number %></dd>
+</dl>
